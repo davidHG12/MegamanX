@@ -15,6 +15,8 @@ public class Megaman : MonoBehaviour
     float direction = 1;
     float horizontal;
     float normalGravity;
+    int saltoExtra = 25;
+    bool isSaltoExtra = false;
 
 
     /*
@@ -107,20 +109,51 @@ public class Megaman : MonoBehaviour
     }
 
     void Saltar()
+
     {
-        
-       if(isGrounded() && !myAnimator.GetBool("jumping"))
+        if (isGrounded() && !myAnimator.GetBool("jumping"))
+
         {
+
             myAnimator.SetBool("jumping", false);
+
             myAnimator.SetBool("falling", false);
+
             if (Input.GetKeyDown(KeyCode.Space))
+
             {
+
+                Debug.Log("salte 1");
+
                 myAnimator.SetTrigger("takeof");
+
                 myAnimator.SetBool("jumping", true);
+
                 myBody.AddForce(new Vector2(0, jumpSpeed), ForceMode2D.Impulse);
+
             }
+
         }
-        
+
+        if (Input.GetKeyDown(KeyCode.Space) && myAnimator.GetBool("jumping") && saltoExtra >= 1 && !isGrounded() && !isSaltoExtra)
+
+        {
+
+            Debug.Log("salte 2");
+
+            myBody.AddForce(new Vector2(0, jumpSpeed), ForceMode2D.Impulse);
+
+            myAnimator.SetTrigger("takeof");
+
+            saltoExtra--;
+
+            isSaltoExtra = true;
+
+        }
+
+        if(isGrounded() && isSaltoExtra)
+        isSaltoExtra = false;
+
     }
 
     void falling()
