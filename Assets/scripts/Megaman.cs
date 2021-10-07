@@ -71,7 +71,7 @@ public class Megaman : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.X))
             {
                 float mov = Input.GetAxis("Horizontal");
-                Instantiate(An_Bullet, transform.position + new Vector3(1, tamX / 2, 1), transform.rotation);
+                Instantiate(An_Bullet, transform.position + new Vector3(2, tamX / 2, 2), transform.rotation);
                 fireInterval = Time.time + nextFire;
             }
 

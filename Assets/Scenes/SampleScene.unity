@@ -10840,6 +10840,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -3423217328473281905, guid: f502f71acdbde0e459508a26e9e607ef, type: 3}
+      propertyPath: m_Radius
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 910950433469765937, guid: f502f71acdbde0e459508a26e9e607ef, type: 3}
       propertyPath: m_Name
       value: An_Bullet
@@ -10854,11 +10858,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5907252493291853209, guid: f502f71acdbde0e459508a26e9e607ef, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -39.43
+      value: -8.73
       objectReference: {fileID: 0}
     - target: {fileID: 5907252493291853209, guid: f502f71acdbde0e459508a26e9e607ef, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 14.09
+      value: 8.4
       objectReference: {fileID: 0}
     - target: {fileID: 5907252493291853209, guid: f502f71acdbde0e459508a26e9e607ef, type: 3}
       propertyPath: m_LocalPosition.z
