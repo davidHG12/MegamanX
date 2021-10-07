@@ -12,6 +12,9 @@ public class Megaman : MonoBehaviour
     [SerializeField] float dashTime;
     [SerializeField] float dashSpeed;
     [SerializeField] float nextFire;
+    int saltoExtra = 25;
+
+    bool isSaltoExtra = false;
 
     /*
     [SerializeField] float dashSpeed;
@@ -47,7 +50,7 @@ public class Megaman : MonoBehaviour
 
         Vector2 esquinaInfIzq = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
         minX = esquinaInfIzq.x + tamX / 2;
-        minY = esquinaInfIzq.y ;
+        minY = esquinaInfIzq.y;
 
     }
 
@@ -62,7 +65,7 @@ public class Megaman : MonoBehaviour
         Dash();
     }
 
-    
+
     void Fire()
     {
         if (Input.GetKey(KeyCode.X))
@@ -100,20 +103,53 @@ public class Megaman : MonoBehaviour
     }
 
     void Saltar()
+
     {
-        
-       if(isGrounded() && !myAnimator.GetBool("jumping"))
+
+        if (isGrounded() && !myAnimator.GetBool("jumping"))
+
         {
+
             myAnimator.SetBool("jumping", false);
+
             myAnimator.SetBool("falling", false);
+
             if (Input.GetKeyDown(KeyCode.Space))
+
             {
+
+                Debug.Log("salte 1");
+
                 myAnimator.SetTrigger("takeof");
+
                 myAnimator.SetBool("jumping", true);
+
                 myBody.AddForce(new Vector2(0, jumpSpeed), ForceMode2D.Impulse);
+
             }
+
         }
-        
+
+        if (Input.GetKeyDown(KeyCode.Space) && myAnimator.GetBool("jumping") && saltoExtra >= 1 && !isGrounded() && !isSaltoExtra)
+
+        {
+
+            Debug.Log("salte 2");
+
+            myBody.AddForce(new Vector2(0, jumpSpeed), ForceMode2D.Impulse);
+
+            myAnimator.SetTrigger("takeof");
+
+            saltoExtra--;
+
+            isSaltoExtra = true;
+
+        }
+
+        if (isGrounded() && isSaltoExtra)
+
+            isSaltoExtra = false;
+
     }
 
     void falling()
@@ -129,8 +165,8 @@ public class Megaman : MonoBehaviour
     {
         //return pies.IsTouchingLayers(LayerMask.GetMask("Ground"));
         RaycastHit2D myRaycast = Physics2D.Raycast(myCollider.bounds.center, Vector2.down, myCollider.bounds.extents.y + 0.2f, LayerMask.GetMask("Ground"));
-        Debug.DrawRay(myCollider.bounds.center, new Vector2(0, (myCollider.bounds.extents.y + 0.2f)*-1), Color.red);
-        return myRaycast.collider != null; 
+        Debug.DrawRay(myCollider.bounds.center, new Vector2(0, (myCollider.bounds.extents.y + 0.2f) * -1), Color.red);
+        return myRaycast.collider != null;
     }
 
 
@@ -173,7 +209,7 @@ public class Megaman : MonoBehaviour
                 }
                 else
                 {
-                   
+
                     myAnimator.SetBool("dashing", false);
 
                 }
