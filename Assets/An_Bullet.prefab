@@ -102,7 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedB: 2
   col: 0
-  Player: {fileID: 0}
+  Player: {fileID: 929985635928289287, guid: 0b2fa40ea0922324f8378e2a9a05194e, type: 3}
 --- !u!50 &2922480345679505854
 Rigidbody2D:
   serializedVersion: 4
@@ -122,7 +122,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!58 &-3423217328473281905
 CircleCollider2D:
