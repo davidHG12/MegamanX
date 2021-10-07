@@ -167,6 +167,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  pies: {fileID: 0}
+  jumpSpeed: 0
+  An_Bullet: {fileID: 910950433469765937, guid: f502f71acdbde0e459508a26e9e607ef, type: 3}
+  dashCooldown: 0
+  dashTime: 0
+  dashSpeed: 0
+  nextFire: 0.5
 --- !u!1 &5420358409666363516
 GameObject:
   m_ObjectHideFlags: 0

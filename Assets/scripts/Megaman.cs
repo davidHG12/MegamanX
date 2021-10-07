@@ -7,9 +7,11 @@ public class Megaman : MonoBehaviour
     [SerializeField] float speed;
     [SerializeField] BoxCollider2D pies;
     [SerializeField] float jumpSpeed;
+    [SerializeField] GameObject An_Bullet;
     [SerializeField] float dashCooldown;
     [SerializeField] float dashTime;
     [SerializeField] float dashSpeed;
+    [SerializeField] float nextFire;
 
     /*
     [SerializeField] float dashSpeed;
@@ -21,7 +23,12 @@ public class Megaman : MonoBehaviour
     Animator myAnimator;
     Rigidbody2D myBody;
     BoxCollider2D myCollider;
-   
+
+
+    private float tamX;
+    private float tamY;
+
+    float minX, maxX, minY, maxY, fireInterval;
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +37,19 @@ public class Megaman : MonoBehaviour
         myBody = GetComponent<Rigidbody2D>();
         myCollider = GetComponent<BoxCollider2D>();
 
-}
+
+        tamX = (GetComponent<SpriteRenderer>()).bounds.size.x;
+        tamY = (GetComponent<SpriteRenderer>()).bounds.size.y;
+
+        Vector2 esquinaSupDer = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
+        maxX = esquinaSupDer.x - tamX / 2;
+        maxY = esquinaSupDer.y - tamY / 2;
+
+        Vector2 esquinaInfIzq = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
+        minX = esquinaInfIzq.x + tamX / 2;
+        minY = esquinaInfIzq.y ;
+
+    }
 
     // Update is called once per frame
     void Update()
@@ -49,6 +68,13 @@ public class Megaman : MonoBehaviour
         if (Input.GetKey(KeyCode.X))
         {
             myAnimator.SetLayerWeight(1, 1);
+            if (Input.GetKeyDown(KeyCode.X))
+            {
+                float mov = Input.GetAxis("Horizontal");
+                Instantiate(An_Bullet, transform.position + new Vector3(1, tamX / 2, 1), transform.rotation);
+                fireInterval = Time.time + nextFire;
+            }
+
         }
         else
             myAnimator.SetLayerWeight(1, 0);
