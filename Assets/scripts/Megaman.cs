@@ -7,17 +7,26 @@ public class Megaman : MonoBehaviour
     [SerializeField] float speed;
     [SerializeField] BoxCollider2D pies;
     [SerializeField] float jumpSpeed;
+    [SerializeField] float dashSpeed;
     [SerializeField] float dashCooldown;
     [SerializeField] float dashTime;
-    [SerializeField] float dashSpeed;
+    bool isDashing;
+    bool canDash = true;
+    float direction = 1;
+    float horizontal;
+    float normalGravity;
+
 
     /*
     [SerializeField] float dashSpeed;
     private float dashTime;
     [SerializeField] float startDashTime;
+
+
  
     */
 
+    IEnumerator dashCoroutine;
     Animator myAnimator;
     Rigidbody2D myBody;
     BoxCollider2D myCollider;
@@ -29,21 +38,45 @@ public class Megaman : MonoBehaviour
         myAnimator = GetComponent<Animator>();
         myBody = GetComponent<Rigidbody2D>();
         myCollider = GetComponent<BoxCollider2D>();
+        normalGravity = myBody.gravityScale;
 
 }
 
     // Update is called once per frame
     void Update()
     {
-        dashCooldown -= Time.deltaTime;
+        //dashCooldown -= Time.deltaTime;
+        if (horizontal != 0)
+        {
+            direction = horizontal;
+        }
+        horizontal = Input.GetAxisRaw("Horizontal");
         Mover();
         Saltar();
         falling();
         Fire();
-        Dash();
+
+
+        if (Input.GetKey(KeyCode.Z) && canDash == true)
+        {
+            if (dashCoroutine != null)
+            {
+                StopCoroutine(dashCoroutine);
+            }
+            dashCoroutine = Dash(dashTime, dashCooldown);
+            StartCoroutine(dashCoroutine);
+        }
+
     }
 
-    
+    private void FixedUpdate()
+    {
+        if (isDashing)
+        {
+            myBody.AddForce(new Vector2(direction * dashSpeed,0), ForceMode2D.Impulse);
+        }
+    }
+
     void Fire()
     {
         if (Input.GetKey(KeyCode.X))
@@ -114,14 +147,36 @@ public class Megaman : MonoBehaviour
         myAnimator.SetBool("falling", true);
     }
 
-    void AfterTakeOff2Event()
+    IEnumerator Dash(float dashDuration, float dashCooldown)
     {
-        myAnimator.SetBool("dash", false);
         myAnimator.SetBool("dashing", true);
+        Vector2 originalVelocity = myBody.velocity;
+        isDashing = true;
+        canDash = false;
+        myBody.gravityScale = 0;
+        myBody.velocity = Vector2.zero;
+        yield return new WaitForSeconds(dashDuration);
+        myAnimator.SetBool("dashing", false);
+        isDashing = false;
+        myBody.gravityScale = normalGravity;
+        myBody.velocity = originalVelocity;
+        yield return new WaitForSeconds(dashCooldown);
+        canDash = true;
     }
 
+    /*IEnumerator Dash (float Direction)
+    {
+        isDashing = true;
+        myBody.velocity = new Vector2(myBody.velocity.x, 0f);
+        myBody.AddForce(new Vector2(dashDistance * Direction, 0f), ForceMode2D.Impulse);
+        float gravity = myBody.gravityScale;
+        myBody.gravityScale = 0;
+        yield return new WaitForSeconds(0.4f);
+        isDashing = false;
+        myBody.gravityScale = gravity;
+    }*/
 
-    void Dash()
+    /*void Dash()
     {
         float movd = Input.GetAxis("Horizontal");
         if (Input.GetKey(KeyCode.Z))
@@ -141,7 +196,10 @@ public class Megaman : MonoBehaviour
 
                     transform.localScale = new Vector2(Mathf.Sign(movd), 1);
                     transform.Translate(new Vector2(movd * dashSpeed, 0));
+                    //myBody.velocity = new Vector2(myBody.velocity.x, 0f);
+                    //myBody.AddForce(new Vector2(dashDistance * Direction, 0f), ForceMode2D.Impulse);
                     //myBody.AddForce(new Vector2(dashSpeed, 0), ForceMode2D.Impulse);
+                    //myBody.velocity = new Vector2(dashSpeed, 0);
 
 
                 }
@@ -159,8 +217,8 @@ public class Megaman : MonoBehaviour
 
     private void StopDash()
     {
-        myBody.velocity = Vector2.zero;
+        //myBody.velocity = Vector2.zero;
         dashCooldown = dashTime;
         myAnimator.SetBool("dashing", false);
-    }
+    }*/
 }
