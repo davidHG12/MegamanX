@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{c3ed0030-b6e9-e3af-ccd6-f7b8312aa6cf}</ProjectGuid>
+    <ProjectGuid>{7f33e14a-edb0-4dde-b557-454eff96ef42}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -38,6 +38,8 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\Enemy.cs" />
      <Compile Include="Assets\Scripts\Megaman.cs" />
+     <Compile Include="Assets\Scripts\Bullet.cs" />
+     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Reference Include="UnityEngine">
         <HintPath>F:/UnityEditors/2021.1.15f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
@@ -270,13 +272,13 @@
         <HintPath>F:/UnityEditors/2021.1.15f1/Editor/Data/Managed/UnityEngine/UnityEditor.UnityConnectModule.dll</HintPath>
     </Reference>
     <Reference Include="Pathfinding.Ionic.Zip.Reduced">
-        <HintPath>F:/Projects/Megaman/Assets/AstarPathfindingProject/Plugins/DotNetZip/Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
+        <HintPath>F:/OneDrive - Universidad de la Sabana/Desktop/Megaman/MegamanX/Assets/AstarPathfindingProject/Plugins/DotNetZip/Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
-        <HintPath>F:/Projects/Megaman/Library/PackageCache/com.unity.visualscripting@1.6.1/Runtime/VisualScripting.Flow/Dependencies/NCalc/Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
+        <HintPath>F:/OneDrive - Universidad de la Sabana/Desktop/Megaman/MegamanX/Library/PackageCache/com.unity.visualscripting@1.6.1/Runtime/VisualScripting.Flow/Dependencies/NCalc/Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-        <HintPath>F:/Projects/Megaman/Library/PackageCache/com.unity.nuget.newtonsoft-json@2.0.0/Runtime/Newtonsoft.Json.dll</HintPath>
+        <HintPath>F:/OneDrive - Universidad de la Sabana/Desktop/Megaman/MegamanX/Library/PackageCache/com.unity.nuget.newtonsoft-json@2.0.0/Runtime/Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
         <HintPath>F:/UnityEditors/2021.1.15f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
@@ -624,134 +626,134 @@
         <HintPath>F:/UnityEditors/2021.1.15f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Xml.Serialization.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Flow.Editor">
-        <HintPath>F:/Projects/Megaman/Library/ScriptAssemblies/Unity.VisualScripting.Flow.Editor.dll</HintPath>
+        <HintPath>F:/OneDrive - Universidad de la Sabana/Desktop/Megaman/MegamanX/Library/ScriptAssemblies/Unity.VisualScripting.Flow.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Tilemap.Extras">
-        <HintPath>F:/Projects/Megaman/Library/ScriptAssemblies/Unity.2D.Tilemap.Extras.dll</HintPath>
+        <HintPath>F:/OneDrive - Universidad de la Sabana/Desktop/Megaman/MegamanX/Library/ScriptAssemblies/Unity.2D.Tilemap.Extras.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Animation.Editor">
-        <HintPath>F:/Projects/Megaman/Library/ScriptAssemblies/Unity.2D.Animation.Editor.dll</HintPath>
+        <HintPath>F:/OneDrive - Universidad de la Sabana/Desktop/Megaman/MegamanX/Library/ScriptAssemblies/Unity.2D.Animation.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.InternalAPIEngineBridge.001">
-        <HintPath>F:/Projects/Megaman/Library/ScriptAssemblies/Unity.InternalAPIEngineBridge.001.dll</HintPath>
+        <HintPath>F:/OneDrive - Universidad de la Sabana/Desktop/Megaman/MegamanX/Library/ScriptAssemblies/Unity.InternalAPIEngineBridge.001.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-        <HintPath>F:/Projects/Megaman/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+        <HintPath>F:/OneDrive - Universidad de la Sabana/Desktop/Megaman/MegamanX/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.PixelPerfect">
-        <HintPath>F:/Projects/Megaman/Library/ScriptAssemblies/Unity.2D.PixelPerfect.dll</HintPath>
+        <HintPath>F:/OneDrive - Universidad de la Sabana/Desktop/Megaman/MegamanX/Library/ScriptAssemblies/Unity.2D.PixelPerfect.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Tilemap.Editor">
-        <HintPath>F:/Projects/Megaman/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
+        <HintPath>F:/OneDrive - Universidad de la Sabana/Desktop/Megaman/MegamanX/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
     </Reference>
     <Reference Include="PsdPlugin">
-        <HintPath>F:/Projects/Megaman/Library/ScriptAssemblies/PsdPlugin.dll</HintPath>
+        <HintPath>F:/OneDrive - Universidad de la Sabana/Desktop/Megaman/MegamanX/Library/ScriptAssemblies/PsdPlugin.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-        <HintPath>F:/Projects/Megaman/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+        <HintPath>F:/OneDrive - Universidad de la Sabana/Desktop/Megaman/MegamanX/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualStudio.Editor">
-        <HintPath>F:/Projects/Megaman/Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll</HintPath>
+        <HintPath>F:/OneDrive - Universidad de la Sabana/Desktop/Megaman/MegamanX/Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-        <HintPath>F:/Projects/Megaman/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+        <HintPath>F:/OneDrive - Universidad de la Sabana/Desktop/Megaman/MegamanX/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Core.Editor">
-        <HintPath>F:/Projects/Megaman/Library/ScriptAssemblies/Unity.VisualScripting.Core.Editor.dll</HintPath>
+        <HintPath>F:/OneDrive - Universidad de la Sabana/Desktop/Megaman/MegamanX/Library/ScriptAssemblies/Unity.VisualScripting.Core.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-        <HintPath>F:/Projects/Megaman/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+        <HintPath>F:/OneDrive - Universidad de la Sabana/Desktop/Megaman/MegamanX/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.State.Editor">
-        <HintPath>F:/Projects/Megaman/Library/ScriptAssemblies/Unity.VisualScripting.State.Editor.dll</HintPath>
+        <HintPath>F:/OneDrive - Universidad de la Sabana/Desktop/Megaman/MegamanX/Library/ScriptAssemblies/Unity.VisualScripting.State.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.IK.Editor">
-        <HintPath>F:/Projects/Megaman/Library/ScriptAssemblies/Unity.2D.IK.Editor.dll</HintPath>
+        <HintPath>F:/OneDrive - Universidad de la Sabana/Desktop/Megaman/MegamanX/Library/ScriptAssemblies/Unity.2D.IK.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Sprite.Editor">
-        <HintPath>F:/Projects/Megaman/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+        <HintPath>F:/OneDrive - Universidad de la Sabana/Desktop/Megaman/MegamanX/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Psdimporter.Editor">
-        <HintPath>F:/Projects/Megaman/Library/ScriptAssemblies/Unity.2D.Psdimporter.Editor.dll</HintPath>
+        <HintPath>F:/OneDrive - Universidad de la Sabana/Desktop/Megaman/MegamanX/Library/ScriptAssemblies/Unity.2D.Psdimporter.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Path.Editor">
-        <HintPath>F:/Projects/Megaman/Library/ScriptAssemblies/Unity.2D.Path.Editor.dll</HintPath>
+        <HintPath>F:/OneDrive - Universidad de la Sabana/Desktop/Megaman/MegamanX/Library/ScriptAssemblies/Unity.2D.Path.Editor.dll</HintPath>
     </Reference>
     <Reference Include="VSSettingsProvider">
-        <HintPath>F:/Projects/Megaman/Library/ScriptAssemblies/VSSettingsProvider.dll</HintPath>
+        <HintPath>F:/OneDrive - Universidad de la Sabana/Desktop/Megaman/MegamanX/Library/ScriptAssemblies/VSSettingsProvider.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Flow">
-        <HintPath>F:/Projects/Megaman/Library/ScriptAssemblies/Unity.VisualScripting.Flow.dll</HintPath>
+        <HintPath>F:/OneDrive - Universidad de la Sabana/Desktop/Megaman/MegamanX/Library/ScriptAssemblies/Unity.VisualScripting.Flow.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-        <HintPath>F:/Projects/Megaman/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+        <HintPath>F:/OneDrive - Universidad de la Sabana/Desktop/Megaman/MegamanX/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PlasticSCM.Editor">
-        <HintPath>F:/Projects/Megaman/Library/ScriptAssemblies/Unity.PlasticSCM.Editor.dll</HintPath>
+        <HintPath>F:/OneDrive - Universidad de la Sabana/Desktop/Megaman/MegamanX/Library/ScriptAssemblies/Unity.PlasticSCM.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-        <HintPath>F:/Projects/Megaman/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+        <HintPath>F:/OneDrive - Universidad de la Sabana/Desktop/Megaman/MegamanX/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.InternalAPIEditorBridge.001">
-        <HintPath>F:/Projects/Megaman/Library/ScriptAssemblies/Unity.InternalAPIEditorBridge.001.dll</HintPath>
+        <HintPath>F:/OneDrive - Universidad de la Sabana/Desktop/Megaman/MegamanX/Library/ScriptAssemblies/Unity.InternalAPIEditorBridge.001.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-        <HintPath>F:/Projects/Megaman/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+        <HintPath>F:/OneDrive - Universidad de la Sabana/Desktop/Megaman/MegamanX/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Tilemap.Extras.Editor">
-        <HintPath>F:/Projects/Megaman/Library/ScriptAssemblies/Unity.2D.Tilemap.Extras.Editor.dll</HintPath>
+        <HintPath>F:/OneDrive - Universidad de la Sabana/Desktop/Megaman/MegamanX/Library/ScriptAssemblies/Unity.2D.Tilemap.Extras.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Core">
-        <HintPath>F:/Projects/Megaman/Library/ScriptAssemblies/Unity.VisualScripting.Core.dll</HintPath>
+        <HintPath>F:/OneDrive - Universidad de la Sabana/Desktop/Megaman/MegamanX/Library/ScriptAssemblies/Unity.VisualScripting.Core.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Mathematics">
-        <HintPath>F:/Projects/Megaman/Library/ScriptAssemblies/Unity.Mathematics.dll</HintPath>
+        <HintPath>F:/OneDrive - Universidad de la Sabana/Desktop/Megaman/MegamanX/Library/ScriptAssemblies/Unity.Mathematics.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.IK.Runtime">
-        <HintPath>F:/Projects/Megaman/Library/ScriptAssemblies/Unity.2D.IK.Runtime.dll</HintPath>
+        <HintPath>F:/OneDrive - Universidad de la Sabana/Desktop/Megaman/MegamanX/Library/ScriptAssemblies/Unity.2D.IK.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Animation.Triangle.Runtime">
-        <HintPath>F:/Projects/Megaman/Library/ScriptAssemblies/Unity.2D.Animation.Triangle.Runtime.dll</HintPath>
+        <HintPath>F:/OneDrive - Universidad de la Sabana/Desktop/Megaman/MegamanX/Library/ScriptAssemblies/Unity.2D.Animation.Triangle.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Animation.Runtime">
-        <HintPath>F:/Projects/Megaman/Library/ScriptAssemblies/Unity.2D.Animation.Runtime.dll</HintPath>
+        <HintPath>F:/OneDrive - Universidad de la Sabana/Desktop/Megaman/MegamanX/Library/ScriptAssemblies/Unity.2D.Animation.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.PixelPerfect.Editor">
-        <HintPath>F:/Projects/Megaman/Library/ScriptAssemblies/Unity.2D.PixelPerfect.Editor.dll</HintPath>
+        <HintPath>F:/OneDrive - Universidad de la Sabana/Desktop/Megaman/MegamanX/Library/ScriptAssemblies/Unity.2D.PixelPerfect.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
-        <HintPath>F:/Projects/Megaman/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+        <HintPath>F:/OneDrive - Universidad de la Sabana/Desktop/Megaman/MegamanX/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Mathematics.Editor">
-        <HintPath>F:/Projects/Megaman/Library/ScriptAssemblies/Unity.Mathematics.Editor.dll</HintPath>
+        <HintPath>F:/OneDrive - Universidad de la Sabana/Desktop/Megaman/MegamanX/Library/ScriptAssemblies/Unity.Mathematics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Common.Runtime">
-        <HintPath>F:/Projects/Megaman/Library/ScriptAssemblies/Unity.2D.Common.Runtime.dll</HintPath>
+        <HintPath>F:/OneDrive - Universidad de la Sabana/Desktop/Megaman/MegamanX/Library/ScriptAssemblies/Unity.2D.Common.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.SpriteShape.Editor">
-        <HintPath>F:/Projects/Megaman/Library/ScriptAssemblies/Unity.2D.SpriteShape.Editor.dll</HintPath>
+        <HintPath>F:/OneDrive - Universidad de la Sabana/Desktop/Megaman/MegamanX/Library/ScriptAssemblies/Unity.2D.SpriteShape.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Common.Editor">
-        <HintPath>F:/Projects/Megaman/Library/ScriptAssemblies/Unity.2D.Common.Editor.dll</HintPath>
+        <HintPath>F:/OneDrive - Universidad de la Sabana/Desktop/Megaman/MegamanX/Library/ScriptAssemblies/Unity.2D.Common.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.SpriteShape.Runtime">
-        <HintPath>F:/Projects/Megaman/Library/ScriptAssemblies/Unity.2D.SpriteShape.Runtime.dll</HintPath>
+        <HintPath>F:/OneDrive - Universidad de la Sabana/Desktop/Megaman/MegamanX/Library/ScriptAssemblies/Unity.2D.SpriteShape.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.State">
-        <HintPath>F:/Projects/Megaman/Library/ScriptAssemblies/Unity.VisualScripting.State.dll</HintPath>
+        <HintPath>F:/OneDrive - Universidad de la Sabana/Desktop/Megaman/MegamanX/Library/ScriptAssemblies/Unity.VisualScripting.State.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="PackageToolsEditor.csproj">
-      <Project>{1f8f9d31-2753-77e6-52f6-16f30bf09e3d}</Project>
+      <Project>{d5a66ad8-3770-7f09-f6dd-dac4c5cad181}</Project>
       <Name>PackageToolsEditor</Name>
     </ProjectReference>
     <ProjectReference Include="AstarPathfindingProject.csproj">
-      <Project>{144b31cc-4502-8270-1885-ea9483244bae}</Project>
+      <Project>{8367fa4e-dae6-5504-a357-435b4415a7e4}</Project>
       <Name>AstarPathfindingProject</Name>
     </ProjectReference>
     <ProjectReference Include="AstarPathfindingProjectEditor.csproj">
-      <Project>{ee151917-d779-4090-8dec-5d4b2e5fe74b}</Project>
+      <Project>{d293df57-a9f3-cd04-9190-aab1da5830bb}</Project>
       <Name>AstarPathfindingProjectEditor</Name>
     </ProjectReference>
   </ItemGroup>

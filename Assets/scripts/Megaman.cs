@@ -8,19 +8,30 @@ public class Megaman : MonoBehaviour
     [SerializeField] float jumpSpeed = 20;
     [SerializeField] GameObject vfx_death;
     [SerializeField] AudioClip sfx_death;
-    bool pause;
+    public bool pause;
     Animator myAnimator;
+    int soundcompare;
     Rigidbody2D myBody;
     BoxCollider2D myCollider;
     int saltoExtra = 25;
     bool isSaltoExtra = false;
-    [SerializeField] float mov;
+    public float mov;
 
     public bool Dash;
     public float Dash_time;
     public float Dash_speed;
 
     public bool movRight;
+
+    public GameObject[] bullets;
+    public bool shooting;
+    private float shoot_time;
+    public float time;
+    public GameObject point;
+    [SerializeField] AudioClip sfx_jump;
+    [SerializeField] AudioClip sfx_shoot;
+    [SerializeField] AudioClip sfx_dash;
+    bool soundstop = false;
 
     void Start()
     {
@@ -37,13 +48,43 @@ public class Megaman : MonoBehaviour
             Jump();
             Falling();
             Resetear();
+            Shoot();
         }
     }
     void FixedUpdate()
     {
-        Dash_Skill();
+        Dash_Press();
     }
 
+    void Shoot()
+    {
+        if(Input.GetKeyDown(KeyCode.F))
+        {
+            AudioSource.PlayClipAtPoint(sfx_shoot, Camera.main.transform.position);
+            shoot_time = 0.01f;
+            GameObject obj = Instantiate(bullets[0], point.transform.position, transform.rotation) as GameObject;
+            if(!shooting)
+            {
+                shooting = true;
+            }
+        }
+        if(shooting)
+        {
+            shoot_time += 1 * Time.deltaTime;
+            myAnimator.SetLayerWeight(0,0);
+            myAnimator.SetLayerWeight(1,1);
+        }
+        else
+        {
+            myAnimator.SetLayerWeight(0,1);
+            myAnimator.SetLayerWeight(1,0);
+        }
+        if(shoot_time >= time)
+        {
+            shooting = false;
+            shoot_time = 0;
+        }
+    }
     void Movement()
     {
         // float mov = Input.GetAxis("Horizontal");
@@ -82,6 +123,7 @@ public class Megaman : MonoBehaviour
             myAnimator.SetBool("isFalling", false);
             if (Input.GetKeyDown(KeyCode.Space))
             {
+                AudioSource.PlayClipAtPoint(sfx_jump, Camera.main.transform.position);
                 myAnimator.SetTrigger("Jump");
                 myAnimator.SetBool("isJumping", true);
                 myBody.AddForce(new Vector2(0, jumpSpeed), ForceMode2D.Impulse);
@@ -90,19 +132,20 @@ public class Megaman : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && saltoExtra >= 1 && !isGrounded() && !isSaltoExtra)
 
         {
-
+            AudioSource.PlayClipAtPoint(sfx_jump, Camera.main.transform.position);
             myBody.AddForce(new Vector2(0, jumpSpeed), ForceMode2D.Impulse);
 
             myAnimator.SetTrigger("Jump");
 
             saltoExtra--;
-
+            myAnimator.SetBool("isJumping", true);
             isSaltoExtra = true;
 
         }
 
         if (isGrounded() && isSaltoExtra)
             isSaltoExtra = false;
+            myAnimator.SetBool("isJumping", false);
     }
 
     void Falling()
@@ -119,14 +162,14 @@ public class Megaman : MonoBehaviour
         return myRayCast.collider != null;
     }
 
-    void afterJumpEvent()
+    public void afterJumpEvent()
     {
         myAnimator.SetBool("isFalling", true);
         myAnimator.SetBool("isJumping", false);
     }
-    void afterDashEvent()
+    void afterDash()
     {
-        myAnimator.SetBool("isDashing", false);
+        myAnimator.SetBool("isDashing",false);
     }
 
     void OnCollisionEnter2D(Collision2D c)
@@ -147,12 +190,15 @@ public class Megaman : MonoBehaviour
         Destroy(gameObject);
     }
 
-    void Dash_Skill()
+    void Dash_Press()
     {
         if (Input.GetKey(KeyCode.X))
         {
-            // myAnimator.SetBool("isDashing", true);
-            // myBody.AddForce(new Vector2(jumpSpeed - 10,0 ), ForceMode2D.Impulse);
+            if(!soundstop)
+            {
+                AudioSource.PlayClipAtPoint(sfx_dash, Camera.main.transform.position);
+                soundstop = true;
+            }
             Dash_time += 1 * Time.deltaTime;
             if(Dash_time < 0.35f)
             {
@@ -172,6 +218,7 @@ public class Megaman : MonoBehaviour
         }
         else
         {
+            soundstop = false;
             Dash = false;
             myAnimator.SetBool("isDashing", false);
             Dash_time = 0;

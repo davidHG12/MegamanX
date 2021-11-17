@@ -6,6 +6,7 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] float range;
     [SerializeField] GameObject player;
+    [SerializeField] AudioClip sfx_death;
     void Update()
     {
         // if(Vector2.Distance(player.transform.position, transform.position) <= range)
@@ -18,5 +19,14 @@ public class Enemy : MonoBehaviour
         Gizmos.color= new Color(1f, 0, 0, 0.35f);
         Gizmos.DrawSphere(transform.position, range);
         //Gizmos.DrawLine(transform.position, player.transform.position);
+    }
+    void OnCollisionEnter2D(Collision2D c)
+    {
+        if (c.gameObject.CompareTag("Bullet"))
+        {
+            AudioSource.PlayClipAtPoint(sfx_death, Camera.main.transform.position);
+            Destroy(c.gameObject);
+            Destroy(this.gameObject);
+        }
     }
 }

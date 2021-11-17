@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{ee151917-d779-4090-8dec-5d4b2e5fe74b}</ProjectGuid>
+    <ProjectGuid>{d293df57-a9f3-cd04-9190-aab1da5830bb}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>AstarPathfindingProjectEditor</AssemblyName>
@@ -298,31 +298,31 @@
         <HintPath>F:/UnityEditors/2021.1.15f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Plastic.Antlr3.Runtime">
-        <HintPath>F:/Projects/Megaman/Library/PackageCache/com.unity.collab-proxy@1.5.7/Lib/Editor/PlasticSCM/Unity.Plastic.Antlr3.Runtime.dll</HintPath>
+        <HintPath>F:/OneDrive - Universidad de la Sabana/Desktop/Megaman/MegamanX/Library/PackageCache/com.unity.collab-proxy@1.5.7/Lib/Editor/PlasticSCM/Unity.Plastic.Antlr3.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.YamlDotNet">
-        <HintPath>F:/Projects/Megaman/Library/PackageCache/com.unity.visualscripting@1.6.1/Editor/VisualScripting.Core/Dependencies/YamlDotNet/Unity.VisualScripting.YamlDotNet.dll</HintPath>
+        <HintPath>F:/OneDrive - Universidad de la Sabana/Desktop/Megaman/MegamanX/Library/PackageCache/com.unity.visualscripting@1.6.1/Editor/VisualScripting.Core/Dependencies/YamlDotNet/Unity.VisualScripting.YamlDotNet.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.IonicZip">
-        <HintPath>F:/Projects/Megaman/Library/PackageCache/com.unity.visualscripting@1.6.1/Editor/VisualScripting.Core/Dependencies/DotNetZip/Unity.VisualScripting.IonicZip.dll</HintPath>
+        <HintPath>F:/OneDrive - Universidad de la Sabana/Desktop/Megaman/MegamanX/Library/PackageCache/com.unity.visualscripting@1.6.1/Editor/VisualScripting.Core/Dependencies/DotNetZip/Unity.VisualScripting.IonicZip.dll</HintPath>
     </Reference>
     <Reference Include="Pathfinding.Ionic.Zip.Reduced">
-        <HintPath>F:/Projects/Megaman/Assets/AstarPathfindingProject/Plugins/DotNetZip/Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
+        <HintPath>F:/OneDrive - Universidad de la Sabana/Desktop/Megaman/MegamanX/Assets/AstarPathfindingProject/Plugins/DotNetZip/Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
     </Reference>
     <Reference Include="log4netPlastic">
-        <HintPath>F:/Projects/Megaman/Library/PackageCache/com.unity.collab-proxy@1.5.7/Lib/Editor/PlasticSCM/log4netPlastic.dll</HintPath>
+        <HintPath>F:/OneDrive - Universidad de la Sabana/Desktop/Megaman/MegamanX/Library/PackageCache/com.unity.collab-proxy@1.5.7/Lib/Editor/PlasticSCM/log4netPlastic.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
-        <HintPath>F:/Projects/Megaman/Library/PackageCache/com.unity.visualscripting@1.6.1/Runtime/VisualScripting.Flow/Dependencies/NCalc/Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
+        <HintPath>F:/OneDrive - Universidad de la Sabana/Desktop/Megaman/MegamanX/Library/PackageCache/com.unity.visualscripting@1.6.1/Runtime/VisualScripting.Flow/Dependencies/NCalc/Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-        <HintPath>F:/Projects/Megaman/Library/PackageCache/com.unity.nuget.newtonsoft-json@2.0.0/Runtime/Newtonsoft.Json.dll</HintPath>
+        <HintPath>F:/OneDrive - Universidad de la Sabana/Desktop/Megaman/MegamanX/Library/PackageCache/com.unity.nuget.newtonsoft-json@2.0.0/Runtime/Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="unityplastic">
-        <HintPath>F:/Projects/Megaman/Library/PackageCache/com.unity.collab-proxy@1.5.7/Lib/Editor/PlasticSCM/unityplastic.dll</HintPath>
+        <HintPath>F:/OneDrive - Universidad de la Sabana/Desktop/Megaman/MegamanX/Library/PackageCache/com.unity.collab-proxy@1.5.7/Lib/Editor/PlasticSCM/unityplastic.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
-        <HintPath>F:/Projects/Megaman/Library/PackageCache/com.unity.ext.nunit@1.0.6/net35/unity-custom/nunit.framework.dll</HintPath>
+        <HintPath>F:/OneDrive - Universidad de la Sabana/Desktop/Megaman/MegamanX/Library/PackageCache/com.unity.ext.nunit@1.0.6/net35/unity-custom/nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
         <HintPath>F:/UnityEditors/2021.1.15f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
@@ -673,25 +673,25 @@
         <HintPath>F:/UnityEditors/2021.1.15f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Xml.XPath.XDocument.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-        <HintPath>F:/Projects/Megaman/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+        <HintPath>F:/OneDrive - Universidad de la Sabana/Desktop/Megaman/MegamanX/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-        <HintPath>F:/Projects/Megaman/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+        <HintPath>F:/OneDrive - Universidad de la Sabana/Desktop/Megaman/MegamanX/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TestRunner">
-        <HintPath>F:/Projects/Megaman/Library/ScriptAssemblies/UnityEngine.TestRunner.dll</HintPath>
+        <HintPath>F:/OneDrive - Universidad de la Sabana/Desktop/Megaman/MegamanX/Library/ScriptAssemblies/UnityEngine.TestRunner.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.TestRunner">
-        <HintPath>F:/Projects/Megaman/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
+        <HintPath>F:/OneDrive - Universidad de la Sabana/Desktop/Megaman/MegamanX/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="AstarPathfindingProject.csproj">
-      <Project>{144b31cc-4502-8270-1885-ea9483244bae}</Project>
+      <Project>{8367fa4e-dae6-5504-a357-435b4415a7e4}</Project>
       <Name>AstarPathfindingProject</Name>
     </ProjectReference>
     <ProjectReference Include="PackageToolsEditor.csproj">
-      <Project>{1f8f9d31-2753-77e6-52f6-16f30bf09e3d}</Project>
+      <Project>{d5a66ad8-3770-7f09-f6dd-dac4c5cad181}</Project>
       <Name>PackageToolsEditor</Name>
     </ProjectReference>
   </ItemGroup>
