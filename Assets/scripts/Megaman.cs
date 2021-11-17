@@ -4,146 +4,96 @@ using UnityEngine;
 
 public class Megaman : MonoBehaviour
 {
-    [SerializeField] float speed;
-    [SerializeField] BoxCollider2D pies;
-    [SerializeField] float jumpSpeed;
-    [SerializeField] float dashSpeed;
-    [SerializeField] float dashCooldown;
-    [SerializeField] float dashTime;
-    bool isDashing;
-    bool canDash = true;
-    float direction = 1;
-    float horizontal;
-    float normalGravity;
-    int saltoExtra = 25;
-    bool isSaltoExtra = false;
-
-
-    /*
-    [SerializeField] float dashSpeed;
-    private float dashTime;
-    [SerializeField] float startDashTime;
-
-
- 
-    */
-
-    IEnumerator dashCoroutine;
+    [SerializeField] float speed = 10;
+    [SerializeField] float jumpSpeed = 20;
+    [SerializeField] GameObject vfx_death;
+    [SerializeField] AudioClip sfx_death;
+    bool pause;
     Animator myAnimator;
     Rigidbody2D myBody;
     BoxCollider2D myCollider;
-   
+    int saltoExtra = 25;
+    bool isSaltoExtra = false;
+    [SerializeField] float mov;
 
-    // Start is called before the first frame update
+    public bool Dash;
+    public float Dash_time;
+    public float Dash_speed;
+
+    public bool movRight;
+
     void Start()
     {
         myAnimator = GetComponent<Animator>();
         myBody = GetComponent<Rigidbody2D>();
         myCollider = GetComponent<BoxCollider2D>();
-        normalGravity = myBody.gravityScale;
+    }
 
-}
-
-    // Update is called once per frame
     void Update()
     {
-        //dashCooldown -= Time.deltaTime;
-        if (horizontal != 0)
+        if (!pause)
         {
-            direction = horizontal;
-        }
-        horizontal = Input.GetAxisRaw("Horizontal");
-        Mover();
-        Saltar();
-        falling();
-        Fire();
-
-
-        if (Input.GetKey(KeyCode.Z) && canDash == true)
-        {
-            if (dashCoroutine != null)
-            {
-                StopCoroutine(dashCoroutine);
-            }
-            dashCoroutine = Dash(dashTime, dashCooldown);
-            StartCoroutine(dashCoroutine);
-        }
-
-    }
-
-    private void FixedUpdate()
-    {
-        if (isDashing)
-        {
-            myBody.AddForce(new Vector2(direction * dashSpeed,0), ForceMode2D.Impulse);
+            Movement();
+            Jump();
+            Falling();
+            Resetear();
         }
     }
-
-    void Fire()
+    void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.X))
-        {
-            myAnimator.SetLayerWeight(1, 1);
-        }
-        else
-            myAnimator.SetLayerWeight(1, 0);
+        Dash_Skill();
     }
-    void Mover()
-    {
-        float mov = Input.GetAxis("Horizontal");
-        if (mov != 0)
-        {
 
+    void Movement()
+    {
+        // float mov = Input.GetAxis("Horizontal");
+        mov = Input.GetAxis("Horizontal");
+        if(mov > 0)
+        {
+            movRight = true;
+        }
+        else if(mov < 0)
+        {
+            movRight = false;
+        }
+        if (mov != 0 && !Dash)
+        {
             transform.localScale = new Vector2(Mathf.Sign(mov), 1);
-            myAnimator.SetBool("running", true);
+            myAnimator.SetBool("isRunning", true);
             transform.Translate(new Vector2(mov * speed * Time.deltaTime, 0));
-
         }
         else
-        {
-
-            myAnimator.SetBool("running", false);
-
-        }
-
+            myAnimator.SetBool("isRunning", false);
     }
 
-    void Saltar()
-
+    void Resetear()
     {
-        if (isGrounded() && !myAnimator.GetBool("jumping"))
-
+        if (Input.GetKeyDown(KeyCode.R))
         {
-
-            myAnimator.SetBool("jumping", false);
-
-            myAnimator.SetBool("falling", false);
-
-            if (Input.GetKeyDown(KeyCode.Space))
-
-            {
-
-                Debug.Log("salte 1");
-
-                myAnimator.SetTrigger("takeof");
-
-                myAnimator.SetBool("jumping", true);
-
-                myBody.AddForce(new Vector2(0, jumpSpeed), ForceMode2D.Impulse);
-
-            }
-
+            transform.position = new Vector2(0, 5);
         }
+    }
 
-        if (Input.GetKeyDown(KeyCode.Space) && myAnimator.GetBool("jumping") && saltoExtra >= 1 && !isGrounded() && !isSaltoExtra)
+    void Jump()
+    {
+
+        if (isGrounded() && !myAnimator.GetBool("isJumping"))
+        {
+            myAnimator.SetBool("isFalling", false);
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                myAnimator.SetTrigger("Jump");
+                myAnimator.SetBool("isJumping", true);
+                myBody.AddForce(new Vector2(0, jumpSpeed), ForceMode2D.Impulse);
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.Space) && saltoExtra >= 1 && !isGrounded() && !isSaltoExtra)
 
         {
-
-            Debug.Log("salte 2");
 
             myBody.AddForce(new Vector2(0, jumpSpeed), ForceMode2D.Impulse);
 
-            myAnimator.SetTrigger("takeof");
+            myAnimator.SetTrigger("Jump");
 
             saltoExtra--;
 
@@ -151,107 +101,80 @@ public class Megaman : MonoBehaviour
 
         }
 
-        if(isGrounded() && isSaltoExtra)
-        isSaltoExtra = false;
-
+        if (isGrounded() && isSaltoExtra)
+            isSaltoExtra = false;
     }
 
-    void falling()
+    void Falling()
     {
-        if (myBody.velocity.y < 0 && !myAnimator.GetBool("jumping"))
+        if (myBody.velocity.y < 0 && !myAnimator.GetBool("isJumping"))
         {
-            myAnimator.SetBool("falling", true);
+            myAnimator.SetBool("isFalling", true);
         }
     }
-
 
     bool isGrounded()
     {
-        //return pies.IsTouchingLayers(LayerMask.GetMask("Ground"));
-        RaycastHit2D myRaycast = Physics2D.Raycast(myCollider.bounds.center, Vector2.down, myCollider.bounds.extents.y + 0.2f, LayerMask.GetMask("Ground"));
-        Debug.DrawRay(myCollider.bounds.center, new Vector2(0, (myCollider.bounds.extents.y + 0.2f)*-1), Color.red);
-        return myRaycast.collider != null; 
+        RaycastHit2D myRayCast = Physics2D.Raycast(myCollider.bounds.center, Vector2.down, myCollider.bounds.extents.y + 0.2f, LayerMask.GetMask("Ground"));
+        return myRayCast.collider != null;
     }
 
-
-    void AfterTakeOffEvent()
+    void afterJumpEvent()
     {
-        myAnimator.SetBool("jumping", false);
-        myAnimator.SetBool("falling", true);
+        myAnimator.SetBool("isFalling", true);
+        myAnimator.SetBool("isJumping", false);
+    }
+    void afterDashEvent()
+    {
+        myAnimator.SetBool("isDashing", false);
     }
 
-    IEnumerator Dash(float dashDuration, float dashCooldown)
+    void OnCollisionEnter2D(Collision2D c)
     {
-        myAnimator.SetBool("dashing", true);
-        Vector2 originalVelocity = myBody.velocity;
-        isDashing = true;
-        canDash = false;
-        myBody.gravityScale = 0;
-        myBody.velocity = Vector2.zero;
-        yield return new WaitForSeconds(dashDuration);
-        myAnimator.SetBool("dashing", false);
-        isDashing = false;
-        myBody.gravityScale = normalGravity;
-        myBody.velocity = originalVelocity;
-        yield return new WaitForSeconds(dashCooldown);
-        canDash = true;
-    }
-
-    /*IEnumerator Dash (float Direction)
-    {
-        isDashing = true;
-        myBody.velocity = new Vector2(myBody.velocity.x, 0f);
-        myBody.AddForce(new Vector2(dashDistance * Direction, 0f), ForceMode2D.Impulse);
-        float gravity = myBody.gravityScale;
-        myBody.gravityScale = 0;
-        yield return new WaitForSeconds(0.4f);
-        isDashing = false;
-        myBody.gravityScale = gravity;
-    }*/
-
-    /*void Dash()
-    {
-        float movd = Input.GetAxis("Horizontal");
-        if (Input.GetKey(KeyCode.Z))
+        if (c.gameObject.CompareTag("Enemy"))
         {
+            StartCoroutine("Die");
+        }
+    }
+    IEnumerator Die()
+    {
+        pause = true;
+        myAnimator.SetBool("Death", true);
+        myBody.isKinematic = true;
+        yield return new WaitForSeconds(0.5f);
+        AudioSource.PlayClipAtPoint(sfx_death, Camera.main.transform.position);
+        Instantiate(vfx_death, transform.position, transform.rotation);
+        Destroy(gameObject);
+    }
 
-            myAnimator.SetBool("dashing", true);
-
-            if (dashCooldown <= 0)
+    void Dash_Skill()
+    {
+        if (Input.GetKey(KeyCode.X))
+        {
+            // myAnimator.SetBool("isDashing", true);
+            // myBody.AddForce(new Vector2(jumpSpeed - 10,0 ), ForceMode2D.Impulse);
+            Dash_time += 1 * Time.deltaTime;
+            if(Dash_time < 0.35f)
             {
-                StopDash();
+                
+                Dash = true;
+                myAnimator.SetBool("isDashing", true);
+                if(movRight)
+                    transform.Translate(Vector3.right * Dash_speed * Time.fixedDeltaTime);
+                if(!movRight)
+                    transform.Translate(Vector3.left * Dash_speed * Time.fixedDeltaTime);
             }
             else
             {
-
-                if (movd != 0)
-                {
-
-                    transform.localScale = new Vector2(Mathf.Sign(movd), 1);
-                    transform.Translate(new Vector2(movd * dashSpeed, 0));
-                    //myBody.velocity = new Vector2(myBody.velocity.x, 0f);
-                    //myBody.AddForce(new Vector2(dashDistance * Direction, 0f), ForceMode2D.Impulse);
-                    //myBody.AddForce(new Vector2(dashSpeed, 0), ForceMode2D.Impulse);
-                    //myBody.velocity = new Vector2(dashSpeed, 0);
-
-
-                }
-                else
-                {
-                   
-                    myAnimator.SetBool("dashing", false);
-
-                }
-
-                dashCooldown = 3;
+                Dash = false;
+                myAnimator.SetBool("isDashing", false);
             }
         }
+        else
+        {
+            Dash = false;
+            myAnimator.SetBool("isDashing", false);
+            Dash_time = 0;
+        }
     }
-
-    private void StopDash()
-    {
-        //myBody.velocity = Vector2.zero;
-        dashCooldown = dashTime;
-        myAnimator.SetBool("dashing", false);
-    }*/
 }
