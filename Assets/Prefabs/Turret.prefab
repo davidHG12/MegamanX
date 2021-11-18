@@ -99,7 +99,7 @@ MonoBehaviour:
   actionDis: 0
   bala: {fileID: 5188560584170177463, guid: c635ca2152c02d245a0f257a1b9551e6, type: 3}
   cadencia: 0.1
-  piont: {fileID: 0}
+  piont: {fileID: 4015532632238399553}
 --- !u!212 &7244235385969884620
 SpriteRenderer:
   m_ObjectHideFlags: 0
