@@ -174,7 +174,7 @@ public class Megaman : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D c)
     {
-        if (c.gameObject.CompareTag("Enemy"))
+        if (c.gameObject.CompareTag("Enemy") || c.gameObject.CompareTag("EnemyBullet"))
         {
             StartCoroutine("Die");
         }

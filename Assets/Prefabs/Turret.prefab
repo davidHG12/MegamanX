@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2620650240537240108}
   - component: {fileID: 7904526583436529185}
   - component: {fileID: 7244235385969884620}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Turret
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ MonoBehaviour:
   sfx_shootT: {fileID: 8300000, guid: e14b3e947bb69b54fb141bd652bbf798, type: 3}
   actionDis: 0
   bala: {fileID: 5188560584170177463, guid: c635ca2152c02d245a0f257a1b9551e6, type: 3}
-  cadencia: 0.5
+  cadencia: 0.1
   piont: {fileID: 0}
 --- !u!212 &7244235385969884620
 SpriteRenderer:
@@ -161,7 +161,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4015532632238399553}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: PIONT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
